@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"lazer-database","appId":"1:1051310141888:android:fb383f2c66c86aeb375825","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"lazer-database","configurations":{"android":"1:1051310141888:android:fb383f2c66c86aeb375825","ios":"1:1051310141888:ios:eea1f849dc1076b6375825"}}}}}}

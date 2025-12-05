@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1051310141888",
+    "project_id": "lazer-database",
+    "storage_bucket": "lazer-database.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051310141888:android:fb383f2c66c86aeb375825",
+        "android_client_info": {
+          "package_name": "com.example.lazer_events"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKWW9el5zPF3yw_2BaD4nq-eLIWoaMtRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
