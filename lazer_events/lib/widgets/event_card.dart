@@ -4,13 +4,17 @@ import '../models/event.dart';
 class EventCard extends StatelessWidget {
   final Event event;
   final VoidCallback onTap;
+  final VoidCallback? onEdit;
   final VoidCallback? onDelete;
+  final bool showEditButton;
   final bool showDeleteButton;
 
   const EventCard({
     super.key,
     required this.event,
     required this.onTap,
+    this.onEdit,
+    this.showEditButton = false,
     this.onDelete,
     this.showDeleteButton = false,
   });
@@ -153,6 +157,14 @@ class EventCard extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
+                          if (showEditButton && onEdit != null)
+                            IconButton(
+                              icon: const Icon(Icons.edit, color: Colors.black),
+                              onPressed: onEdit,
+                              iconSize: 20,
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                            ),
                           if (showDeleteButton && onDelete != null)
                             IconButton(
                               icon: const Icon(Icons.delete, color: Colors.red),

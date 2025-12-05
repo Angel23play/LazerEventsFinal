@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/event_provider.dart';
-import '../widgets/event_card.dart';
+import '../../providers/event_provider.dart';
+import '../../widgets/event_card.dart';
 import 'event_detail_screen.dart';
 import 'create_event_screen.dart';
-import '../models/event.dart'; 
+import '../../models/event.dart';
+import 'package:lazer_events/screens/event/edit_event_screen.dart';
 
 class EventListScreen extends StatelessWidget {
   const EventListScreen({super.key});
@@ -37,12 +38,16 @@ class __EventListBodyState extends State<_EventListBody> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("🎉 Eventos Disponibles"),
+        title: const Text(
+          "Lazer Events -- Eventos Disponibles",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.blue.shade800,
         centerTitle: true,
         elevation: 4,
         actions: [
           IconButton(
+            color: Colors.white,
             icon: const Icon(Icons.add_circle_outline, size: 28),
             onPressed: () {
               Navigator.push(
@@ -56,6 +61,7 @@ class __EventListBodyState extends State<_EventListBody> {
             tooltip: "Crear nuevo evento",
           ),
           IconButton(
+            color: Colors.white,
             icon: const Icon(Icons.refresh, size: 26),
             onPressed: _refreshEvents,
             tooltip: "Actualizar eventos",
@@ -133,9 +139,23 @@ class __EventListBodyState extends State<_EventListBody> {
                               _refreshEvents();
                             });
                           },
-                          onDelete: () =>
-                              _showDeleteDialog(context, event, provider),
+
+                          onDelete: () {
+                            _showDeleteDialog(context, event, provider);
+                          },
                           showDeleteButton: true,
+
+                          onEdit: () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => EditEventScreen(event: event),
+                              ),
+                            ).then((_) {
+                              _refreshEvents();
+                            }),
+                          },
+                          showEditButton: true,
                         );
                       },
                     ),

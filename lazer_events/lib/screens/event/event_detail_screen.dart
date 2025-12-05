@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/event.dart';
-import 'booking_screen.dart';
+import '../../models/event.dart';
+import '../booking/booking_screen.dart';
 
 class EventDetailScreen extends StatelessWidget {
   final Event event;
@@ -23,9 +23,13 @@ class EventDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           event.title,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+          ),
         ),
-        backgroundColor: Colors.blue.shade800, // CORREGIDO
+        backgroundColor: Colors.blue.shade800,
         centerTitle: true,
         elevation: 4,
       ),
@@ -41,10 +45,7 @@ class EventDetailScreen extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.blue.shade800,
-                    Colors.blue.shade600,
-                  ], // CORREGIDO
+                  colors: [Colors.blue.shade800, Colors.blue.shade600],
                 ),
               ),
               child: Stack(
@@ -69,7 +70,7 @@ class EventDetailScreen extends StatelessWidget {
                     },
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
-                        color: Colors.blue.shade100, // CORREGIDO
+                        color: Colors.blue.shade100,
                         child: const Icon(
                           Icons.event,
                           size: 100,
@@ -127,17 +128,13 @@ class EventDetailScreen extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       color: event.price > 0
-                          ? Colors
-                                .orange
-                                .shade50 // CORREGIDO
-                          : Colors.green.shade50, // CORREGIDO
+                          ? Colors.orange.shade50
+                          : Colors.green.shade50,
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: event.price > 0
-                            ? Colors
-                                  .orange
-                                  .shade200 // CORREGIDO
-                            : Colors.green.shade200, // CORREGIDO
+                            ? Colors.orange.shade200
+                            : Colors.green.shade200,
                       ),
                     ),
                     child: Text(
@@ -148,10 +145,8 @@ class EventDetailScreen extends StatelessWidget {
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: event.price > 0
-                            ? Colors
-                                  .orange
-                                  .shade800 // CORREGIDO
-                            : Colors.green.shade800, // CORREGIDO
+                            ? Colors.orange.shade800
+                            : Colors.green.shade800,
                       ),
                     ),
                   ),
@@ -234,11 +229,9 @@ class EventDetailScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade50, // CORREGIDO
+                      color: Colors.grey.shade50,
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: Colors.grey.shade200,
-                      ), // CORREGIDO
+                      border: Border.all(color: Colors.grey.shade200),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -289,7 +282,7 @@ class EventDetailScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: isSoldOut
                             ? Colors.grey
-                            : Colors.blue.shade800, // CORREGIDO
+                            : Colors.blue.shade800,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 18),
                         shape: RoundedRectangleBorder(
@@ -321,11 +314,9 @@ class EventDetailScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Colors.red.shade50, // CORREGIDO
+                        color: Colors.red.shade50,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: Colors.red.shade200,
-                        ), // CORREGIDO
+                        border: Border.all(color: Colors.red.shade200),
                       ),
                       child: const Row(
                         children: [
@@ -364,7 +355,7 @@ class EventDetailScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade200), // CORREGIDO
+        border: Border.all(color: Colors.grey.shade200),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.1),
@@ -378,7 +369,7 @@ class EventDetailScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon, size: 18, color: Colors.blue.shade700), // CORREGIDO
+              Icon(icon, size: 18, color: Colors.blue.shade700),
               const SizedBox(width: 8),
               Text(
                 title,
@@ -396,9 +387,7 @@ class EventDetailScreen extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: isHighlighted
-                  ? Colors.orange.shade800
-                  : Colors.black, // CORREGIDO
+              color: isHighlighted ? Colors.orange.shade800 : Colors.black,
             ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,

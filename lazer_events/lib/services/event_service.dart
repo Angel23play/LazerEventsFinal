@@ -12,9 +12,11 @@ class EventService {
         .orderBy('createdAt', descending: true)
         .get();
 
-    return snapshot.docs
-        .map((doc) => Event.fromMap(doc.data() as Map<String, dynamic>))
-        .toList();
+    return snapshot.docs.map((doc) {
+      final data = doc.data() as Map<String, dynamic>;
+      data['id'] = doc.id; // 🔥 IMPORTANTE
+      return Event.fromMap(data);
+    }).toList();
   }
 
   // Crear un evento
@@ -22,30 +24,32 @@ class EventService {
     await eventsRef.doc(event.id).set(event.toMap());
   }
 
-  //  Obtener un evento por ID
+  // Obtener un evento por ID
   Future<Event?> getEventById(String id) async {
     final doc = await eventsRef.doc(id).get();
 
     if (!doc.exists) return null;
 
-    return Event.fromMap(doc.data() as Map<String, dynamic>);
+    final data = doc.data() as Map<String, dynamic>;
+    data['id'] = doc.id; // 🔥 IMPORTANTE
+
+    return Event.fromMap(data);
   }
 
-  //  Actualizar evento
-  Future<void> updateEvent(String id, Event event) async {
-    await eventsRef.doc(id).update(event.toMap());
+  // Actualizar evento
+  Future<void> updateEvent(Event event) async {
+    await eventsRef.doc(event.id).update(event.toMap());
   }
 
-  //  Eliminar evento
+  // Eliminar evento
   Future<void> deleteEvent(String id) async {
     await eventsRef.doc(id).delete();
   }
 
-  //  Registrar un usuario en un evento (con validación de aforo)
+  // Registrar un usuario en un evento
   Future<void> registerForEvent(String eventId, String userId) async {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
       DocumentReference eventDoc = eventsRef.doc(eventId);
-
       DocumentSnapshot snapshot = await transaction.get(eventDoc);
 
       if (!snapshot.exists) {

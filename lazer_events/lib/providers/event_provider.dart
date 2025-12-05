@@ -48,12 +48,12 @@ class EventProvider with ChangeNotifier {
     }
   }
 
-  Future<void> updateEvent(String id, Event updatedEvent) async {
+  Future<void> updateEvent(Event updatedEvent) async {
     _loading = true;
     notifyListeners();
 
     try {
-      await _eventService.updateEvent(id, updatedEvent);
+      await _eventService.updateEvent(updatedEvent);
       await loadEvents();
     } catch (e) {
       _error = 'Error actualizando evento: $e';

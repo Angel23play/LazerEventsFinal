@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/event.dart';
-import '../services/booking_service.dart';
+import '../../models/event.dart';
+import '../../services/booking_service.dart';
 
 class BookingScreen extends StatefulWidget {
   final Event event;
@@ -124,7 +124,7 @@ class _BookingScreenState extends State<BookingScreen> {
           children: [
             Text(
               widget.event.title,
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold ),
             ),
             const SizedBox(height: 8),
 

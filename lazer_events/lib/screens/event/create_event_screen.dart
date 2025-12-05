@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/event.dart';
-import '../services/event_service.dart';
+import '../../models/event.dart';
+import '../../services/event_service.dart';
 
 class CreateEventScreen extends StatefulWidget {
   const CreateEventScreen({super.key});
@@ -98,7 +98,10 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Crear Nuevo Evento"),
+        title: const Text(
+          "Crear Nuevo Evento",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.blue.shade800,
       ),
       body: Padding(
@@ -161,7 +164,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
 
               // Categoría - CORRECCIÓN AQUÍ
               DropdownButtonFormField<String>(
-                initialValue: selectedCategory, // CAMBIADO: initialValue → value
+                initialValue:
+                    selectedCategory, // CAMBIADO: initialValue → value
                 decoration: const InputDecoration(
                   labelText: "Categoría *",
                   prefixIcon: Icon(Icons.category),
